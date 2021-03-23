@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'de.blu'
+version '0.0.1-SNAPSHOT'
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+jar {
+    duplicatesStrategy = 'EXCLUDE'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
