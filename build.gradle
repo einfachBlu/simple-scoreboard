@@ -17,3 +17,38 @@ jar {
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
+
+subprojects {
+    apply plugin: 'java'
+
+    compileJava {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    jar {
+        duplicatesStrategy = 'EXCLUDE'
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    repositories {
+        mavenCentral()
+        google()
+
+        // Spigot API
+        maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+
+        // Bungeecord Chat (required by spigot-api)
+        maven { url = 'http://maven.elmakers.com/repository/' }
+    }
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok:1.18.8'
+        annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+        compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
+    }
+}

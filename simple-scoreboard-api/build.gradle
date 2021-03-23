@@ -1,0 +1,6 @@
+plugins {
+    id 'java'
+}
+
+group 'de.blu'
+version '0.0.1-SNAPSHOT'

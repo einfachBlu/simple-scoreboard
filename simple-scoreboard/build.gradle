@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
+group 'de.blu'
+version '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation project(":simple-scoreboard-api")
+    implementation 'com.google.inject:guice:4.0'
+    implementation 'org.reflections:reflections:0.9.12'
+}
+
+shadowJar.doLast {
+    File jarFile = file("${project.buildDir}/libs/${project.name}-${project.version}-all.jar")
+
+    if (!jarFile.exists()) {
+        jarFile = file("${project.buildDir}/libs/${project.name}-${project.version}.jar")
+        if (!jarFile.exists()) {
+            //println "output jarFile doesnt exist, maybe something failed with the build?"
+            return
+        }
+    }
+
+    copy {
+        from jarFile
+        into "${project.rootDir}/output/"
+
+        rename {
+            "simple-scoreboard.jar"
+        }
+    }
+
+    copy {
+        from jarFile
+        into "${project.rootDir}/output/"
+
+        rename {
+            "G:\\Programming\\MC_TestServer\\spigot_1_8\\plugins\\simple-scoreboard.jar"
+        }
+    }
+}

@@ -1,0 +1,5 @@
+name: SimpleScoreboard
+main: de.blu.scoreboard.SimpleScoreboard
+version: 0.0.1
+author: Blu
+website: https://github.com/einfachBlu/simple-scoreboard

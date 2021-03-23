@@ -1,2 +1,4 @@
 rootProject.name = 'simple-scoreboard'
+include 'simple-scoreboard'
+include 'simple-scoreboard-api'
 
