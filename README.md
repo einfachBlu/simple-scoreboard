@@ -1,5 +1,8 @@
 # General
-This Library was made to handle easier the scoreboard components. Especially Tablist and the Sidebar
+This Library was made to handle easier the scoreboard components. Especially Tablist and the Sidebar.
+This Library can be used for 1.8-1.12 Servers. 1.12+ is also possible but if the native version of spigot is 1.12+ then the color is not working correctly.
+You can create a new Branch with 1.12 and just also add team#setColor(colorInterface...) if you want to. I will make that later with Reflections based on the
+native Version but for now its not implemented yet.
 
 # Repository
 ### Gradle
