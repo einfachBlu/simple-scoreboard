@@ -146,9 +146,16 @@ public final class Scoreboard extends ScoreboardAPI {
         this.getHighestPriority(this.tablistPrefixInterfaces);
     TablistSuffixInterface tablistSuffixInterface =
         this.getHighestPriority(this.tablistSuffixInterfaces);
+    TablistColorInterface tablistColorInterface =
+        this.getHighestPriority(this.tablistColorInterfaces);
 
+    ChatColor color = ChatColor.WHITE;
     String prefix = "";
     String suffix = "";
+
+    if (tablistColorInterface != null) {
+      color = tablistColorInterface.getTablistColor(player, target);
+    }
 
     if (tablistPrefixInterface != null) {
       prefix =
@@ -161,6 +168,9 @@ public final class Scoreboard extends ScoreboardAPI {
           ChatColor.translateAlternateColorCodes(
               '&', tablistSuffixInterface.getTablistSuffix(player, target));
     }
+
+    // Because 1.8 doesn't support color directly
+    prefix += color;
 
     if (!team.getPrefix().equals(prefix)) {
       team.setPrefix(prefix);

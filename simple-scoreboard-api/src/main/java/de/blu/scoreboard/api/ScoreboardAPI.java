@@ -58,7 +58,7 @@ public abstract class ScoreboardAPI {
     this.tablistSortInterfaces.put(priority, tablistSortInterface);
   }
 
-  public void registerTablistSortInterface(
+  public void registerTablistColorInterface(
       int priority, TablistColorInterface tablistColorInterface) {
     this.tablistColorInterfaces.put(priority, tablistColorInterface);
   }
