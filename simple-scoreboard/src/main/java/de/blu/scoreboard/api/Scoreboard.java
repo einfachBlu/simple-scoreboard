@@ -5,6 +5,10 @@ import de.blu.scoreboard.data.ScoreboardTeamData;
 import de.blu.scoreboard.util.FastBoard;
 import de.blu.scoreboard.util.Tablist;
 import lombok.Getter;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -153,10 +157,6 @@ public final class Scoreboard extends ScoreboardAPI {
     String prefix = "";
     String suffix = "";
 
-    if (tablistColorInterface != null) {
-      color = tablistColorInterface.getTablistColor(player, target);
-    }
-
     if (tablistPrefixInterface != null) {
       prefix =
           ChatColor.translateAlternateColorCodes(
@@ -169,15 +169,26 @@ public final class Scoreboard extends ScoreboardAPI {
               '&', tablistSuffixInterface.getTablistSuffix(player, target));
     }
 
+    if (tablistColorInterface != null) {
+      color = tablistColorInterface.getTablistColor(player, target);
+    }
+
     // Because 1.8 doesn't support color directly
     prefix += color;
 
-    if (!team.getPrefix().equals(prefix)) {
-      team.setPrefix(prefix);
+    if (!team.getColor().equals(color)) {
+      // team.setColor(color);
+      team.color(NamedTextColor.NAMES.value(color.name()));
     }
 
-    if (!team.getSuffix().equals(suffix)) {
-      team.setSuffix(suffix);
+    if (!team.prefix().toString().equals(prefix)) {
+      // team.setPrefix(prefix);
+      team.prefix(Component.text(prefix));
+    }
+
+    if (!team.suffix().toString().equals(suffix)) {
+      // team.setSuffix(suffix);
+      team.suffix(Component.text(suffix));
     }
 
     if (!team.hasEntry(target.getName())) {

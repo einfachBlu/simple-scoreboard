@@ -43,12 +43,16 @@ subprojects {
 
         // Bungeecord Chat (required by spigot-api)
         maven { url = 'http://maven.elmakers.com/repository/' }
+
+        // Paper 1.16
+        maven { url = 'https://papermc.io/repo/repository/maven-public/' }
     }
 
     dependencies {
         compileOnly 'org.projectlombok:lombok:1.18.8'
         annotationProcessor 'org.projectlombok:lombok:1.18.8'
 
-        compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
+        //compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
+        compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
     }
 }
