@@ -6,9 +6,6 @@ import de.blu.scoreboard.util.FastBoard;
 import de.blu.scoreboard.util.Tablist;
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -173,12 +170,9 @@ public final class Scoreboard extends ScoreboardAPI {
       color = tablistColorInterface.getTablistColor(player, target);
     }
 
-    // Because 1.8 doesn't support color directly
-    prefix += color;
-
     if (!team.getColor().equals(color)) {
-      // team.setColor(color);
-      team.color(NamedTextColor.NAMES.value(color.name()));
+      team.setColor(color);
+      // team.color(NamedTextColor.NAMES.value(color.name()));
     }
 
     if (!team.prefix().toString().equals(prefix)) {
